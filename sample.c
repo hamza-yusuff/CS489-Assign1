@@ -1,7 +1,16 @@
+#include <stdlib.h>
 #include <stdio.h>
-int main() {
-	char last_name[20];
-	printf ("Enter your last name: ");
-	scanf ("%s", last_name);
-	printf("Entered last name is %s\n", last_name);
-	}
+    
+#define BUFSIZE 256
+    
+// This program prints the size of a specified file in bytes
+int main(int argc, char** argv) {
+    // Ensure that the user supplied exactly one command line argument
+    if (argc != 2) { 
+        fprintf(stderr, "Please provide the address of a file as an input.\n");
+        return -1;
+    }
+    char cmd[BUFSIZE] = "wc -c < ";
+    strcat(cmd, argv[1]);
+    system(cmd);
+}
